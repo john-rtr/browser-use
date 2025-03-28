@@ -239,6 +239,8 @@ class Agent(Generic[Context]):
 		if self.settings.save_conversation_path:
 			logger.info(f'Saving conversation to {self.settings.save_conversation_path}')
 
+		logger.info('This is a fork of origin browser-use repo')
+
 	def _set_message_context(self) -> str | None:
 		if self.tool_calling_method == 'raw':
 			if self.settings.message_context:

@@ -812,6 +812,7 @@ class BrowserContext:
 
 		try:
 			await self.remove_highlights()
+			screenshot_original_b64 = await self.take_screenshot()
 			dom_service = DomService(page)
 			content = await dom_service.get_clickable_elements(
 				focus_element=focus_element,
@@ -851,6 +852,7 @@ class BrowserContext:
 				title=await page.title(),
 				tabs=tabs_info,
 				screenshot=screenshot_b64,
+				screenshot_original=screenshot_original_b64,
 				pixels_above=pixels_above,
 				pixels_below=pixels_below,
 			)
@@ -1172,7 +1174,7 @@ class BrowserContext:
 		"""
 		current_frame = await self.get_current_page()
 		try:
-			elements = await current_frame.query_selector_all(f"text={text}")
+			elements = await current_frame.query_selector_all(f'text={text}')
 			# considering only visible elements
 			elements = [el for el in elements if await el.is_visible()]
 
@@ -1194,8 +1196,6 @@ class BrowserContext:
 		except Exception as e:
 			logger.error(f"Failed to locate element by text '{text}': {str(e)}")
 			return None
-
-
 
 	@time_execution_async('--input_text_element_node')
 	async def _input_text_element_node(self, element_node: DOMElementNode, text: str):
