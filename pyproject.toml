@@ -18,12 +18,12 @@ dependencies = [
     "posthog>=3.7.0",
     "playwright>=1.51.0",
     "markdownify==1.1.0",
-    "langchain-core==0.3.35",
-    "langchain-openai==0.3.1",
-    "langchain-anthropic==0.3.3",
-    "langchain-ollama==0.2.2",
+    "langchain-core>=0.3.35",
+    "langchain-openai>=0.3.1",
+    "langchain-anthropic>=0.3.3",
+    "langchain-ollama>=0.2.2",
     "google-api-core>=2.24.0",
-    "pyperclip>=1.9.0",   # only used for examples
+    "pyperclip>=1.9.0",           # only used for examples
 ]
 urls = { "Repository" = "https://github.com/browser-use/browser-use" }
 
@@ -58,10 +58,9 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build]
 include = [
-  "browser_use/**/*.py",
-  "!browser_use/**/tests/*.py",
-  "!browser_use/**/tests.py",
-  "browser_use/agent/system_prompt.md",
-  "browser_use/dom/buildDomTree.js",
+    "browser_use/**/*.py",
+    "!browser_use/**/tests/*.py",
+    "!browser_use/**/tests.py",
+    "browser_use/agent/system_prompt.md",
+    "browser_use/dom/buildDomTree.js",
 ]
-
